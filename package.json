@@ -51,7 +51,7 @@
     "express-urlrewrite": "^1.2.0",
     "gzip-size": "^3.0.0",
     "isparta-loader": "^1.0.0",
-    "karma": "^0.13.13",
+    "karma": "^6.3.14",
     "karma-browserstack-launcher": "^0.1.4",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coverage": "^0.5.3",

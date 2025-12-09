@@ -4,15 +4,24 @@ All commits that fix bugs or add features need a test.
 
 `<blink>` Do not merge code without tests.`</blink>`
 
+## Commit Messages
+
+This repository uses [Conventional Commits](https://www.conventionalcommits.org/) to automate releases and changelog generation via [Release Please](https://github.com/googleapis/release-please).
+
+Please format your commit messages as:
+- `feat:` for new features
+- `fix:` for bug fixes
+- `docs:` for documentation changes
+- `chore:` for maintenance tasks
+- `test:` for test-related changes
+
+Example: `feat: add new title formatting option`
+
+Breaking changes should include `BREAKING CHANGE:` in the commit body or add `!` after the type: `feat!: remove legacy API`
+
 ## Changelog
 
-All commits that change or add to the API must be done in a pull request
-that also:
-
-- Add an entry to `CHANGES.md` with clear steps for updating code for
-  changed or removed API.
-- Updates examples
-- Updates the docs
+Changelogs are automatically generated from commit messages using Release Please. The changelog is updated when releases are created.
 
 ### Development
 

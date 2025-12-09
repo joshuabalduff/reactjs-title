@@ -116,7 +116,7 @@ module.exports = function (config) {
     }
   }
 
-  // Only add plugins if USE_CLOUD is set, to avoid loading browserstack-launcher unnecessarily
+  // Only add plugins if USE_CLOUD is NOT set, to avoid loading browserstack-launcher unnecessarily
   if (!process.env.USE_CLOUD) {
     configOptions.plugins = [
       'karma-chrome-launcher',

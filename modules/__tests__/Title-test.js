@@ -49,7 +49,7 @@ describe('Title', () => {
   })
 
   it('renders the title', (done) => {
-    const div = document.createElement(div)
+    const div = document.createElement('div')
     render(<A/>, div, () => {
       expect(document.title).toEqual('A | B | C')
       done()
@@ -59,7 +59,7 @@ describe('Title', () => {
   it('handles state changes in the middle of a chain', (done) => {
     // incidentally tests the previous and next instances
     // not getting screwed up too.
-    const div = document.createElement(div)
+    const div = document.createElement('div')
     render(<A/>, div, function () {
       expect(document.title).toEqual('A | B | C')
       const b = findRenderedComponentWithType(this, B)

@@ -52,7 +52,7 @@ module.exports = function (config) {
     },
     ChromeCi: {
       base: 'Chrome',
-      flags: [ '--no-sandbox' ]
+      flags: [ '--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222' ]
     }
   }
 
@@ -73,10 +73,10 @@ module.exports = function (config) {
     coverageReporters.push('coverage')
   }
 
-  config.set({
+  const configOptions = {
     customLaunchers: customLaunchers,
 
-    browsers: [ 'Chrome' ],
+    browsers: [ 'ChromeCi' ],
     frameworks: [ 'mocha' ],
     reporters: [ 'mocha' ].concat(coverageReporters),
 
@@ -114,7 +114,21 @@ module.exports = function (config) {
         { type: 'lcovonly', subdir: '.' }
       ]
     }
-  })
+  }
+
+  // Only add plugins if USE_CLOUD is NOT set, to avoid loading browserstack-launcher unnecessarily
+  if (!process.env.USE_CLOUD) {
+    configOptions.plugins = [
+      'karma-chrome-launcher',
+      'karma-mocha',
+      'karma-mocha-reporter',
+      'karma-sourcemap-loader',
+      'karma-webpack',
+      'karma-coverage'
+    ]
+  }
+
+  config.set(configOptions)
 
   if (process.env.USE_CLOUD) {
     config.browsers = Object.keys(customLaunchers)

@@ -1,0 +1,20 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      # Using v4 major version tag which receives security updates while maintaining compatibility
+      # For stricter version pinning, replace with a specific commit SHA
+      - uses: googleapis/release-please-action@v4.1.3
+        with:
+          release-type: node

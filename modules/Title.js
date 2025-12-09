@@ -47,7 +47,10 @@ class Title extends React.Component {
 }
 
 Title.propTypes = {
-  render: PropTypes.string.isRequired
+  render: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
+  ]).isRequired
 }
 
 export default Title
